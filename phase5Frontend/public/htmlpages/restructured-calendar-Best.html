@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!--<link href="nouislider.css" rel="stylesheet" />-->
+    <!--<script src="nouislider.js"></script> -->
+    <script src="javascriptFunctions/getDataFunctions.js"></script>
+    <link rel="stylesheet" href="./styles/calendarReportStyle.css">
+    <link rel="stylesheet" href="./styles/revenueReportStyle.css"/>
+
+    <style>
+        .card {
+            background-color: rgba(99, 241, 224, 0.445);
+        }
+
+        [class*='calendar-box-'] {
+            min-height: 20rem;
+            min-width: 3rem;
+        }
+
+        [class*='calendar-box-']:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        .calendar-box-ok {
+            background-color: rgba(51, 253, 10, 0.4);
+        }
+
+        .calendar-box-issue {
+            /* make color change if needed */
+
+            background-color: rgba(250, 95, 95, 0.5);
+            background-color: rgba(51, 253, 10, 0.4);
+        }
+
+        #employee-list {
+            min-height: 20rem;
+
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        #DaySchedule {
+            height: auto;
+            overflow-x: hidden;
+            position: relative;
+            max-height: 40rem;
+        }
+
+        .employee-list-item:hover {
+            background-color: rgba(250, 95, 95, 0.5);
+            cursor: pointer;
+        }
+
+      
+    </style>
+
+    <title></title>
+</head>
+
+<body>
+    <div>
+        <nav class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand text-light">
+                <!-- <img src="siteImages/flowershopLogo.png" height=30> -->
+                <img src="siteImages/flowershopLogo.png" height="30" />
+                Bakersfield Flower Shop
+            </a>
+        </nav>
+    </div>
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+
+
+            <div class="col col-lg-9 container-fluid">
+                <div class="row container-fluid">
+                    <div class="col-lg-4 card">
+
+                        <h1>Active Employees</h1>
+
+                        <div class="row py-3">
+
+
+                            <div class="col">
+
+
+                                <div class="form-group">
+                                    <div class="input-group-prepend"></div>
+                                    <select multiple class="form-control emp-list-select" id="employee-list">
+
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                    <div class="col card">
+                        <!------------------------------>
+                        <div class="row py-3">
+                            <div class="col">
+                                <h1>Selected Employee: </h1>
+                                <h1 id="selected-employee-name">None</h1>
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-around">
+                            <div class="col-md-8">
+                                <div class="row justify-content-around">
+                                    <h1>Start Time:</h1>
+                                    <h1 id="employee-start-time">8:00 AM</h1>
+                                </div>
+                            </div>
+
+
+                            <!--<h1 id="am-or-pm-start">am</h1> -->
+                            <div class="col-md-2">
+                                <button id='start-time-subtract' type="button" class=" btn  btn-danger btn-block">
+                                    <h1>
+                                        -
+                                    </h1>
+                                </button>
+                            </div>
+                            <div class="col-md-2">
+                                <button id='start-time-add' type="button" class=" btn  btn-primary btn-block">
+                                    <h1>
+                                        +
+
+                                    </h1>
+
+                                </button>
+                            </div>
+
+                        </div>
+                        <!------------------------------>
+                        <div class="row py-5">
+                            <div class="col-md-8">
+                                <div class="row justify-content-around">
+                                    <h1>End Time:</h1>
+                                    <h1 id="employee-end-time">1:00 PM </h1>
+                                </div>
+                            </div>
+                            <!-- <h1 id="am-or-pm-end">pm</h1> -->
+                            <div class="col-md-2">
+                                <button id='end-time-subtract' type="button" class="  btn  btn-danger  btn-block">
+                                    <h1>
+                                        -
+                                    </h1>
+                                </button>
+                            </div>
+                            <div class="col-md-2 ">
+                                <button id='end-time-add' type="button" class=" btn  btn-primary btn-block">
+                                    <h1>
+                                        +
+                                    </h1>
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="row justify-content-end py-3">
+                            <button id="insert-shift-button" class=" col-sm-6 btn  btn-primary btn-block mx-4">
+                                Insert Into Schedule
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class=" row container-fluid">
+                    <div class="card container-fluid">
+                        <div class="card-content align-items-center">
+
+
+
+                            <div class="row py-3">
+
+
+                                <div class="col text-left">
+                                    <button id="dateLeftArrow" class="btn btn-primary btn-lg" type="submit">
+                                        < </button>
+                                </div>
+                                <div class="col text-center">
+                                    <h1 id="month-text"></h1>
+                                </div>
+                                <div class="col text-right">
+                                    <button id="dateRightArrow" class="btn btn-primary btn-lg" type="submit">
+                                        >
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col text-center">
+                                    <h1>Mon</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Tues</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Wed</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Thurs</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Fri</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Sat</h1>
+                                </div>
+                                <div class="col text-center">
+                                    <h1>Sun</h1>
+                                </div>
+                            </div>
+                            <div class="container-fluid calendar-manager">
+                                <div id='calendar-days-block' class="row">
+
+
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Monday">1</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Tuesday">2</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Wednesday"">3</h1>
+                                        <a class=" card-block stretched-link">
+
+                                            </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Thursday">4</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Friday">5</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Saturday">6</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                    <div class="col card calendar-box-issue">
+                                        <h1 id="day-text-Sunday">7</h1>
+                                        <a class="card-block stretched-link">
+
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="col card">
+                <p class="display-3">Manager Dashboard</p>
+
+                <div class="row">
+                    <div class="col">
+                        <button id="auto-schedule" type="button" class="btn btn-primary">
+                        Auto Schedule
+                    </button>
+                    
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#scheduleReportModal">
+                    Schedule Report
+                </button>
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#revenueReportModal">
+                Revenue Reports
+            </button>
+
+        </div>
+    </div>
+    <h1 class="chosen-day-text">Sun May 17 2020</h1>
+
+                <div id="DaySchedule" class="col justify-content-between">
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#scheduleReportModal">
+                Launch demo modal
+              </button> -->
+            <!--Hidden Elements and Modals-->
+            <!-- Modal -->
+            <div class="modal fade" id="scheduleReportModal" tabindex="-1" role="dialog"
+                aria-labelledby="scheduleReportModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="scheduleReportModalLabel">Generate Schedule Report</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+
+
+                            <h1>Show Schedule For:</h1>
+                            <div class="col">
+
+                                <div class="form-check">
+                                    <input class="form-check-input active" type="checkbox" value="" id="defaultCheck1" checked>
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        Managers
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input active" type="checkbox" value="" id="defaultCheck2" checked>
+                                    <label class="form-check-label" for="defaultCheck2">
+                                        Cashiers
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input active" type="checkbox" value="" id="defaultCheck3" checked>
+                                    <label class="form-check-label" for="defaultCheck3">
+                                        Delivery Drivers
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input active" type="checkbox" value="" id="defaultCheck4" checked>
+                                    <label class="form-check-label" for="defaultCheck4">
+                                        Florists
+                                    </label>
+                                </div>
+                        
+
+                            </div>
+
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="cmd" type="button" class="btn btn-primary">Generate Schedule</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="content" style="opacity: 0.0;" class="date-line">
+
+
+                <nav style="margin: 0px;" class="navbar navbar-dark bg-dark">
+                    <a class="navbar-brand text-light">
+                        <!-- <img src="siteImages/flowershopLogo.png" height=30> -->
+                        <div class="row">
+                            <img src="siteImages/flowershopLogo.png" height="75" />
+                            <h1 class="align-center display-4 mx-3">
+                                Bakersfield Flower Shop
+                            </h1>
+                        </div>
+                    </a>
+                </nav>
+
+                <div class="header-schedule container-fluid">
+                    <h1 class="text-center">Staff Schedule for Week of</h1>
+                    <h1 class="text-center week-of-calendar-report">2020-05-11</h1>
+                    <h2 class="text-center">Created by: Ailsun Humber</h2>
+                </div>
+
+
+                <div id='schedule-div'>
+
+                </div>
+            </div>
+            <div class="modal fade" id="revenueReportModal" tabindex="-1" role="dialog"
+            aria-labelledby="revenueReportModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="revenueReportModalLabel">Generate Revenue Report</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+
+
+                        <h1>Show Revenue Reports</h1>
+                       
+                        <button id="random-payment-button" type="button" class="btn btn-primary">Randomly Generate Payment Data</button>
+
+                        
+                       
+
+                        <!-- <div class="btn-group" role="group" aria-label="Basic example">
+                            <button id="revenue-one-year-limit" type="button" class="btn btn-secondary">1 Year Back</button>
+                            <button id="revenue-five-year-limit" type="button" class="btn btn-secondary">5 Years Back</button>
+                            <button id="revenue-ten-year-limit" type="button" class="btn btn-secondary">10 Years Back</button>
+                        </div> -->
+                    
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="cmd-revenue" type="button" class="btn btn-primary">Generate Revenue Report</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    <div id="revenue-content" class="report-background" style="opacity: 0.0;">
+
+
+        <nav style="margin: 0px;" class="navbar navbar-dark bg-dark">
+            <a class="navbar-brand text-light">
+                <!-- <img src="siteImages/flowershopLogo.png" height=30> -->
+                <div class="row">
+                    <img src="siteImages/flowershopLogo.png" height="75" />
+                    <h1 class="align-center display-4 mx-3">
+                        Bakersfield Flower Shop
+                    </h1>
+                </div>
+            </a>
+        </nav>
+        <div class=" row report-header-block">
+            <div class="col-lg-8">
+                
+                <h1>Revenue And Expenditure Report</h1>
+                <h4>Created by: Ailsun Humber</h4>
+            </div>
+            <div class="col-lg-4 float-right">
+                <h1 id="report-date" class="text-right">May 11 2020</h1>
+                
+            </div>
+        </div>
+
+     
+
+        <div class="incoming-pay-block">
+
+            <h1 class="text-center py-3">Customer Incoming Payments</h1>
+            <div id="revenue-items" class="container-fluid">
+                <div class="row justify-content-around">
+                    <div class="col">
+                        <h3 class="text-center">Customer Name</h3>
+                    </div>
+                    <div class="col">
+                        <h3 class="text-center">Total Purchase Amount</h3>
+                    </div>
+                    <div class="col">
+                        <h3 class="text-center">Most Recent Purchase</h3>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="outgoing-pay-block">
+            <h1 class="text-center py-3">Outgoing Payments To Suppliers</h1>
+            <div id="expense-items" class="container-fluid">
+
+                <div class="row justify-content-around">
+                    <div class="col">
+                        <h3 class="text-center">Supplier Name</h3>
+                    </div>
+                    <div class="col">
+                        <h3 class="text-center">Total Paid To Supplier</h3>
+                    </div>
+                    <div class="col">
+                        <h3 class="text-center">Most Recent Supply Order</h3>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+      
+
+        <div class="revenue-block py-5">
+
+       
+        <div class=" row justify-content-around">
+            <h1>Total Revenue:</h1>
+            <h1 id="total-revenue-element"></h1>
+        </div>
+
+        <div class=" row justify-content-around">
+            <h1>Total Expenses:</h1>
+            <h1 id="total-expenses-element"></h1>
+        </div>
+    </div>
+       
+        <div class=" row justify-content-around profit-block py-5">
+            <p class="display-1">Net Profit: </p>
+            <p id="profit-element" class="display-1"></p>
+        </div>
+
+    </div>
+
+                <!--End Hidden Elements And Modals-->
+
+
+</body>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script language="javascript" src="/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+<script language="javascript" src="js/bootstrap.min.js"></script>
+<script language="javascript" src="./javascriptFunctions/calendarFrontend.js"></script>
+<script language="javascript" src="jspdf.min.js"></script>
+<script language="javascript" src="html2canvas.min.js"></script>
+<script language="javascript" src="./javascriptFunctions/calendarReport.js"></script>
+<script language="javascript" src="./javascriptFunctions/revenueReport.js"></script>
+
+<script>
+
+
+
+
+
+
+    // dangerous?
+    let dateObj = new Date();
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"];
+    $(function () {
+
+        createCalendarTest2()
+        fillCalendarTest2();
+        fillEmployeeNameModal();
+        updateList();
+        //createEmployeeSlider();
+
+        $('#auto-schedule').click(function(){
+            let rightColDate = $('.chosen-day-text').html().split(' ')
+            console.log(rightColDate)
+            console.log($(`#month-text`).html())
+            let newDate = new Date($('.chosen-day-text').html())
+            let startDate = rightColDate[3] + '-' + (newDate.getMonth() + 1) + '-' + $('#day-text-Monday').html();
+            console.log(startDate)
+
+            fetch('generateScheduleForWeek', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ dayToSend: startDate})
+            })
+            .then(() => updateList())
+            .catch(err => console.log(err))
+
+
+        })
+
+        $('.card.calendar-box-issue').click(function () {
+
+
+            // console.log(dateObj.toDateString());
+
+            let calendarDay = $(this).find('h1').html()
+            console.log(calendarDay);
+            dateObj.setDate(calendarDay);
+            
+            console.log(dateObj.toDateString());
+
+
+            $('.chosen-day-text').html(dateObj.toDateString())
+
+            updateList();
+
+
+            //console.log(slider.noUiSlider.get());
+        });
+
+
+        $('#employee-list li a').on('click', function () {
+            console.log('clicked')
+            $(this).html();
+        });
+
+        $('select.emp-list-select').change(function () {
+            let this_employee_name = $(this).children("option:selected").html();
+            $('#selected-employee-name').html(this_employee_name);
+            //console.log(this_employee_id)
+            //$(this).html();
+        });
+
+        
+
+        $('#revenue-one-year-limit').click(function(){
+            console.log("One Clicked")
+        })
+        $('#revenue-five-year-limit').click(function(){
+            console.log("Five Clicked")
+        })
+        $('#revenue-ten-year-limit').click(function(){
+            console.log("Ten Clicked")
+        })
+
+        $('#random-payment-button').click(function(){
+           fetch('generatePayments')
+
+        });
+
+
+        $('#dateRightArrow').click(function () {
+            let currentMonday = $("#day-text-Monday").html();
+
+            console.log(currentMonday);
+
+            let mondayMonth = $('#month-text').html()
+
+            let queryString = mondayMonth + " " + currentMonday + " " + "2020";
+
+            console.log(queryString);
+
+            // console.log('got to here')
+
+            fetch('/getCalendarBlock', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ sentDay: queryString, timeDiff: 7 })
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    $('#day-text-Monday').html(res[0].weekday)
+                    $('#day-text-Tuesday').html(res[1].weekday)
+                    $('#day-text-Wednesday').html(res[2].weekday)
+                    $('#day-text-Thursday').html(res[3].weekday)
+                    $('#day-text-Friday').html(res[4].weekday)
+                    $('#day-text-Saturday').html(res[5].weekday)
+                    $('#day-text-Sunday').html(res[6].weekday)
+
+                    if (res[0].weekday < currentMonday) {
+                        let oldMonth = dateObj.getMonth()
+                        let monthChange = dateObj.setMonth(oldMonth + 1)
+                        let monthNum = dateObj.getMonth()
+                        $('#month-text').html(monthNames[monthNum])
+                    }
+
+
+                })
+                .catch(err => console.log(err))
+        })
+
+        $('#dateLeftArrow').click(function () {
+            let currentMonday = $("#day-text-Monday").html();
+            let currentSunday = $("#day-text-Sunday").html();
+
+            console.log(currentMonday);
+
+            let mondayMonth = $('#month-text').html()
+
+            let queryString = mondayMonth + " " + currentMonday + " " + "2020";
+
+            console.log(queryString);
+
+            // console.log('got to here')
+
+            fetch('/getCalendarBlock', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ sentDay: queryString, timeDiff: -7 })
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    $('#day-text-Monday').html(res[0].weekday)
+                    $('#day-text-Tuesday').html(res[1].weekday)
+                    $('#day-text-Wednesday').html(res[2].weekday)
+                    $('#day-text-Thursday').html(res[3].weekday)
+                    $('#day-text-Friday').html(res[4].weekday)
+                    $('#day-text-Saturday').html(res[5].weekday)
+                    $('#day-text-Sunday').html(res[6].weekday)
+
+                    if (res[0].weekday > currentMonday) {
+                        let oldMonth = dateObj.getMonth()
+                        let monthChange = dateObj.setMonth(oldMonth - 1)
+                        let monthNum = dateObj.getMonth()
+                        $('#month-text').html(monthNames[monthNum])
+                    }
+
+
+                })
+                .catch(err => console.log(err))
+        })
+
+
+
+        $('button').click(function () {
+
+
+            let preOptions = {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: false
+            }
+            let options = {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true
+            };
+            // Todo clean this up
+
+
+            if (this.id === 'start-time-add') {
+
+                let thisThing = new Date(`May 13, 08 ${$('#employee-start-time').html()}`)
+                console.log(thisThing.getHours() + 1)
+                let newTime = new Date(`May 13, 08 ${thisThing.getHours() + 1}:00:00`)
+                console.log(newTime)
+                $('#employee-start-time').html(newTime.toLocaleString('en-US', options));
+
+
+            }
+            if (this.id === 'start-time-subtract') {
+                let thisThing = new Date(`May 13, 08 ${$('#employee-start-time').html()}`)
+                // console.log(thisThing.getHours() + 1)
+                let newTime = new Date(`May 13, 08 ${thisThing.getHours() - 1}:00:00`)
+                console.log(newTime)
+                $('#employee-start-time').html(newTime.toLocaleString('en-US', options));
+            }
+            if (this.id === 'end-time-add') {
+                let thisThing = new Date(`May 13, 08 ${$('#employee-end-time').html()}`)
+                // console.log(thisThing.getHours() + 1)
+                let newTime = new Date(`May 13, 08 ${thisThing.getHours() + 1}:00:00`)
+                console.log(newTime)
+                $('#employee-end-time').html(newTime.toLocaleString('en-US', options))
+
+            }
+            if (this.id === 'end-time-subtract') {
+                let thisThing = new Date(`May 13, 08 ${$('#employee-end-time').html()}`)
+                let newTime = new Date(`May 13, 08 ${thisThing.getHours() - 1}:00:00`)
+                console.log(newTime)
+                $('#employee-end-time').html(newTime.toLocaleString('en-US', options))
+
+            }
+
+
+
+
+        })
+
+
+
+
+        $('#insert-shift-button').click(function () {
+            console.log('clicked');
+            let employeeID = $('select.emp-list-select').children("option:selected").val();
+            let shift_day = $('.chosen-day-text').html()
+            let shiftStartTime = $("#employee-start-time").html()
+            let shiftEndTime = $('#employee-end-time').html()
+            console.log(employeeID, shift_day, shiftStartTime, shiftEndTime);
+
+            fetch('addEmployeesToShift', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: employeeID, day: shift_day, start: shiftStartTime, end: shiftEndTime }),
+            })
+                .then(() => {
+
+                    updateList()
+                })
+                .catch((err) => console.log(err));
+        });
+
+
+        function updateList() {
+
+            $('.chosen-day-text').html(dateObj.toDateString())
+
+            fetch('getEmployeeForDay', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ day: dateObj.toDateString() })
+            })
+                .then(response => response.json())
+                .then(response => {
+                    $('#DaySchedule').html('');
+                    //console.log(response);
+                    for (reply in response) {
+                        $('#DaySchedule').append(`
+                <a class="right-side-emp-list" id="emp-id-right-column-${response[reply].employee_id}" style="text-decoration: none;" href="#">
+                    <div class="col justify-content-between py-1">
+                        <h3 class="text-dark">${response[reply].employee_name}</h3>
+                        <h3 class="text-dark">${response[reply].shift_start} - ${response[reply].shift_end}</h3>
+                    </div>
+                 </a>
+              `)
+                    }
+                })
+        }
+
+
+
+
+
+        function fillCalendarTest2() {
+            fetch('getDateCurrent')
+                .then((response) => response.json())
+                .then((response) => {
+                    $('#month-text').html(response.currentmonth);
+                    console.log()
+                    return response;
+                })    
+                .catch((err) => console.log(err));
+        }
+
+
+
+        $('.card-block').click(function () {
+            console.log('clicked');
+        })
+
+        function createCalendarTest2() {
+            console.log(dateObj)
+
+            postData = dateObj.toDateString()
+            console.log(postData)
+            console.log('got to here')
+
+            fetch('/getCalendarBlock', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ sentDay: postData, timeDiff: 0 })
+            })
+                .then((res) => res.json())
+                .then((res) => {
+                    $('#day-text-Monday').html(res[0].weekday)
+                    $('#day-text-Tuesday').html(res[1].weekday)
+                    $('#day-text-Wednesday').html(res[2].weekday)
+                    $('#day-text-Thursday').html(res[3].weekday)
+                    $('#day-text-Friday').html(res[4].weekday)
+                    $('#day-text-Saturday').html(res[5].weekday)
+                    $('#day-text-Sunday').html(res[6].weekday)
+                })
+                .catch(err => console.log(err))
+
+        }
+
+
+
+
+    });</script>
+</body>
+
+</html>

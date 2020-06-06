@@ -1,0 +1,30 @@
+#content {
+    position: absolute;
+    min-height: 1754px;
+    width: 1240px;
+    z-index: -2;
+}
+.report-cashier-bg {
+    background-color: rgba(49, 180, 51, 0.6);
+}
+.report-driver-bg {
+    background-color: rgba(113, 92, 229, 0.6);
+}
+.report-florist-bg {
+    background-color: rgba(185, 32, 32, 0.486);
+}
+.report-manager-bg {
+    background-color: rgba(117, 150, 46, 0.712);
+}
+
+.date-line {
+    background-color: rgba(250, 229, 138, 0.835);
+}
+
+.header-schedule {
+    background-color: rgb(210, 212, 248);
+}
+
+.schedule-day {
+    background-color: red;
+}

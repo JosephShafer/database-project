@@ -1,0 +1,22 @@
+{
+  "name": "flowershop",
+  "version": "1.0.0",
+  "description": "Phase 5 project",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^4.4.1",
+    "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "jquery": "^3.5.0",
+    "jspdf": "^1.5.3",
+    "nouislider": "^14.2.0",
+    "pdfkit": "^0.11.0",
+    "pg": "^8.0.3",
+    "popper.js": "^1.16.0"
+  }
+}

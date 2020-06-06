@@ -1,0 +1,114 @@
+File's just for easy editing for mockaroo custom options
+it uses commas as a separator
+
+PRODUCT NAME
+Rose,
+Tulip,
+Baby’s Breath,
+Hydrangea,
+Daffodil,
+Lily,
+Chrysanthemum,
+Gerbera,
+Carnation,
+Carnation,
+
+Red,
+Yellow,
+White,
+Light Blue,
+Yellow,
+White,
+Yellow,
+Pink,
+Pink,
+Orange
+
+
+
+PRODUCT IMAGE
+redrose.png, 
+yellowtulip.png, 
+whitebreath.png, 
+bluehydrangea.png, 
+yellowdaffodil.png, 
+whitelily.png, 
+yellowchrsanthemum.png, 
+pinkgerbera.png, 
+pinkcarnation.png,
+orangebirdofparadise.png 
+
+
+DESCRIPTION
+A beautiful thornless red rose,
+A beautiful tulip with a large yellow bulb,
+A common flower filler with small flowers coming off its branches,
+Contains small flowers in bunches at the end of a long stem,
+Contains a trumpet shaped petal surrounded by a star shaped petal,
+Big flowers with a large petal span,
+Blooms into a large beautiful flower,
+A part of the sunflower and daisy family. Appears to look like a colorful sunflower,
+A commonly known flower with branched or forked clusters,
+Known for its distinct exotic look,
+
+
+ORDER STATUS
+
+new order,
+checked availability,
+credits checked,
+packed,
+out for delivery,
+delivered,
+delivery attempted - not received,
+contact customer,
+cancelled,
+in store purchase
+
+PAYMENT TYPE
+
+Cash,
+Credit Card - In store,
+Debit Card - In store,
+Check,
+Gift Card - In store,
+Coupon,
+Instore Credit,
+Credit Card - Online,
+Debit Card - Online,
+Gift Card - Online
+
+SUPPLIER
+
+Kern Roses,
+Taft Daisies,
+Bakersfield Tulips,
+Sun Valley Group,
+Luffa Farm,
+Rose Story Farm,
+Kendall Farms,
+Kilcoyne Lilac Farm,
+Ori’s Orchid’s,
+Mary’s Marigold’s
+
+
+Taft,
+Bakersfield,
+Bakersfield,
+Bakersfield,
+Lamont,
+Arvin,
+Arvin
+
+
+
+Florist,
+Delivery Driver,
+Cashier,
+Florist,
+Delivery Driver,
+Florist,
+Manager,
+Cashier,
+Delivery Driver,
+Florist

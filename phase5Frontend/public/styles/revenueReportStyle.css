@@ -1,0 +1,30 @@
+.report-header-block{
+    background-color: rgba(46, 199, 245, 0.41);
+}
+
+.revenue-block{
+    background-color: rgba(46, 199, 245, 0.41);
+}
+
+.incoming-pay-block{
+ background-color: rgba(225, 245, 46, 0.41);
+}
+
+.outgoing-pay-block{
+ background-color: rgba(214, 75, 33, 0.41);
+}
+
+.profit-block {
+background-color: rgba(96, 231, 130, 0.41);
+
+}
+
+.report-background {
+background-color: rgba(0, 0, 0, 0.061);
+
+}
+
+#revenue-content {
+    height: 1754px;
+    width: 1240px;
+}

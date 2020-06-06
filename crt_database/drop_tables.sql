@@ -1,0 +1,22 @@
+DROP TABLE IF EXISTS
+customer,
+employee,
+flower_product,
+order_status,
+payment_type,
+supplier,
+delivery_address,
+contains,
+incoming_payment,
+needs,
+outgoing_payment,
+package,
+payment,
+product_order,
+recipient,
+refills,
+requires,
+supply_purchase_order,
+work_history,
+work_shift
+CASCADE;

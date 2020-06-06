@@ -1,0 +1,10 @@
+insert into payment_type (payment_type_id, description) values (1, 'Cash');
+insert into payment_type (payment_type_id, description) values (2, 'Credit Card - In store');
+insert into payment_type (payment_type_id, description) values (3, 'Debit Card - In store');
+insert into payment_type (payment_type_id, description) values (4, 'Check');
+insert into payment_type (payment_type_id, description) values (5, 'Gift Card - In store');
+insert into payment_type (payment_type_id, description) values (6, 'Coupon');
+insert into payment_type (payment_type_id, description) values (7, 'Instore Credit');
+insert into payment_type (payment_type_id, description) values (8, 'Credit Card - Online');
+insert into payment_type (payment_type_id, description) values (9, 'Debit Card - Online');
+insert into payment_type (payment_type_id, description) values (10, 'Gift Card - Online');
